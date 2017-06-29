@@ -1,6 +1,11 @@
 @extends('form')
+@section('footer')
+@endsection
+
 @section('content')
 
+
+      <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
           Top Navigation
@@ -14,8 +19,7 @@
       </section>
 
       <!-- Main content -->
-    <!-- Main content -->
-    <section class="content">
+      <section class="content">
         <div class="callout callout-info">
           <h4>Tip!</h4>
 
@@ -39,7 +43,9 @@
           <!-- /.box-body -->
         </div>
         <!-- /.box -->
-    </section>
-    <!-- /.content -->
+      </section>
+      <!-- /.content -->
+
+    <!-- /.container -->
 
 @endsection

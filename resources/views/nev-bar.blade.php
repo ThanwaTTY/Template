@@ -23,7 +23,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -31,8 +31,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="/"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="/"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="/index2"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -44,14 +44,14 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="top-nav"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="boxed"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="fixed"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="collapsed-sidebar"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+            <li><a href="/pages/layout/top-nav"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+            <li><a href="/pages/layout/boxed"><i class="fa fa-circle-o"></i> Boxed</a></li>
+            <li><a href="/pages/layout/fixed"><i class="fa fa-circle-o"></i> Fixed</a></li>
+            <li><a href="/pages/layout/collapsed-sidebar"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
         </li>
         <li>
-          <a href="widgets">
+          <a href="/pages/widgets">
             <i class="fa fa-th"></i> <span>Widgets</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
@@ -67,10 +67,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="chartjs"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="morris"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="flot"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="inline"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+            <li><a href="/pages/charts/chartjs"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+            <li><a href="/pages/charts/morris"><i class="fa fa-circle-o"></i> Morris</a></li>
+            <li><a href="/pages/charts/flot"><i class="fa fa-circle-o"></i> Flot</a></li>
+            <li><a href="/pages/charts/inline"><i class="fa fa-circle-o"></i> Inline charts</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -82,12 +82,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="general"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="icons"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="buttons"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="sliders"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="timeline"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="modals"><i class="fa fa-circle-o"></i> Modals</a></li>
+            <li><a href="/pages/UI/general"><i class="fa fa-circle-o"></i> General</a></li>
+            <li><a href="/pages/UI/icons"><i class="fa fa-circle-o"></i> Icons</a></li>
+            <li><a href="/pages/UI/buttons"><i class="fa fa-circle-o"></i> Buttons</a></li>
+            <li><a href="/pages/UI/sliders"><i class="fa fa-circle-o"></i> Sliders</a></li>
+            <li><a href="/pages/UI/timeline"><i class="fa fa-circle-o"></i> Timeline</a></li>
+            <li><a href="/pages/UI/modals"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -98,9 +98,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="generalelements"><i class="fa fa-circle-o"></i> General Elements</a></li>
-            <li><a href="advanced"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-            <li><a href="editors"><i class="fa fa-circle-o"></i> Editors</a></li>
+            <li><a href="/pages/forms/generalelements"><i class="fa fa-circle-o"></i> General Elements</a></li>
+            <li><a href="/pages/forms/advanced"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+            <li><a href="/pages/forms/editors"><i class="fa fa-circle-o"></i> Editors</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -111,12 +111,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="simple"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="data"><i class="fa fa-circle-o"></i> Data tables</a></li>
+            <li><a href="/pages/tables/simple"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+            <li><a href="/pages/tables/data"><i class="fa fa-circle-o"></i> Data tables</a></li>
           </ul>
         </li>
         <li>
-          <a href="calendar">
+          <a href="/pages/calendar">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>
@@ -128,10 +128,13 @@
           <a href="#">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
             <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            {{-- <span class="pull-right-container"> --}}
           <ul class="treeview-menu">
-            <li><a href="mailbox"><i class="fa fa-circle-o"></i> inbox</a></li>
-            <li><a href="compose"><i class="fa fa-circle-o"></i> Compose</a></li>
-            <li><a href="read-mail"><i class="fa fa-circle-o"></i> Read</a></li>
+            <li><a href="/pages/mailbox/mailbox"><i class="fa fa-circle-o"></i> inbox</a></li>
+            <li><a href="/pages/mailbox/compose"><i class="fa fa-circle-o"></i> Compose</a></li>
+            <li><a href="/pages/mailbox/read-mail"><i class="fa fa-circle-o"></i> Read</a></li>
           </ul>
             </span>
           </a>
@@ -144,15 +147,15 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="invoice"><i class="fa fa-circle-o"></i> Invoice</a></li>
-            <li><a href="profile"><i class="fa fa-circle-o"></i> Profile</a></li>
-            <li><a href="login"><i class="fa fa-circle-o"></i> Login</a></li>
-            <li><a href="register"><i class="fa fa-circle-o"></i> Register</a></li>
-            <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-            <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-            <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-            <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-            <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+            <li><a href="/pages/examples/invoice"><i class="fa fa-circle-o"></i> Invoice</a></li>
+            <li><a href="/pages/examples/profile"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li><a href="/pages/examples/login"><i class="fa fa-circle-o"></i> Login</a></li>
+            <li><a href="/pages/examples/register"><i class="fa fa-circle-o"></i> Register</a></li>
+            <li><a href="/pages/examples/lockscreen"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+            <li><a href="/pages/examples/404"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+            <li><a href="/pages/examples/500"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+            <li><a href="/pages/examples/blank"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+            <li><a href="/pages/examples/pace"><i class="fa fa-circle-o"></i> Pace Page</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -188,7 +191,7 @@
             <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
           </ul>
         </li>
-        <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li><a href="/documentation/index"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
         <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
