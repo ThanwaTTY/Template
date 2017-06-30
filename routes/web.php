@@ -14,18 +14,27 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+// Route::get('index', 'AuthController@index');
+Route::get('login', 'AuthController@getlogin')->name('login');
+Route::post('/login', 'AuthController@postLogin');
+Route::get('/register', 'AuthController@register');
+Route::post('/register', 'AuthController@store');
 
+Route::get('logout', 'AuthController@logout');
+// Route::post('/logout', 'AuthController@logout');
+
+// Route::resource('register', 'AuthController');
+
+
+Route::group(['middleware'=>['auth']],function(){
 Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/test/{click}', function ($click) {
-    return view('test', $click);
-});
+	Route::get('/profile', 'ProfileController@index');	
+	Route::post('/profile', 'ProfileController@update');	
 
-Route::get('test2', function () {
-    return view('pages/layout/test2');
-});
+
 
 Route::get('/index2',  function () {
     return view('/index2');
@@ -169,4 +178,5 @@ Route::get('/documentation/index',  function () {
     return view('documentation/index');
 });
 
+});
 
