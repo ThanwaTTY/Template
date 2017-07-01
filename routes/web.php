@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Route::get('/user/index',  function () {
+//     return view('/user/index');
+// });
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -34,7 +36,12 @@ Route::get('/', function () {
 	Route::get('/profile', 'ProfileController@index');	
 	Route::post('/profile', 'ProfileController@update');	
 
-
+    Route::get('user', 'UserController@index');
+    Route::post('/adduser', 'UserController@store');
+    Route::get('/user/{user}/edit', 'UserController@edit');
+    Route::post('/user/{id}', 'UserController@update');
+    Route::post('/user/{id}', 'UserController@update');
+    Route::delete('/user/{id}', 'UserController@destroy');
 
 Route::get('/index2',  function () {
     return view('/index2');
