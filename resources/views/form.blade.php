@@ -596,7 +596,7 @@
 <script src="/dist/js/demo.js"></script>
 
 --}}
-<!-- jQuery 2.2.3 -->
+{{-- <!-- jQuery 2.2.3 -->
 <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -612,7 +612,7 @@
 <script src="../dist/js/demo.js"></script>
 <!-- fullCalendar 2.2.5 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="../plugins/fullcalendar/fullcalendar.min.js"></script> 
+<script src="../plugins/fullcalendar/fullcalendar.min.js"></script>  --}}
 
 
 
