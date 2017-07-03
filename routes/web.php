@@ -43,6 +43,10 @@ Route::get('/', function () {
     Route::post('/user/{id}', 'UserController@update');
     Route::delete('/user/{id}', 'UserController@destroy');
 
+
+	Route::get('/deposit', 'DepositController@index');
+    Route::post('/deposit', 'DepositController@store');
+
 Route::get('/index2',  function () {
     return view('/index2');
 });
@@ -50,9 +54,6 @@ Route::get('/index2',  function () {
 Route::get('/pages/layout/top-nav',  function () {
     return view('pages.layout.top-nav');
 });
-// Route::get('pages/layout/top-nav',  function () {
-//     return view('top-nav1');
-// });
 
 Route::get('/pages/layout/boxed',  function () {
     return view('pages.layout.boxed');
