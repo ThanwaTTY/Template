@@ -29,6 +29,23 @@
   <div class="login-logo">
     <a href="../../index2.html"><b>Admin</b>LTE</a>
   </div>
+
+
+  @if(session()->get('massage'))
+        <div class="box">
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i></button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-times"></i></button>
+            </div>
+            <div class="callout callout-danger">
+              <h4>Fail !</h4>
+
+              <p>{{ session()->get('massage') }}</p>
+          </div>
+        </div>
+@endif
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
@@ -36,12 +53,14 @@
     <form action="/login" method="post">
     {{ csrf_field() }}
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" name="email">
+        <input type="email" class="form-control" placeholder="Email" name="email" value="{{ Old('email') }}">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <p>{{ $errors->first('email') }}</p>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input type="password" class="form-control" placeholder="Password" name="password" value="{{ Old('password') }}">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <p>{{ $errors->first('password') }}</p>
       </div>
       <div class="row">
         <div class="col-xs-8">
@@ -82,6 +101,15 @@
 <script src="../../bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="../../plugins/iCheck/icheck.min.js"></script>
+
+
+
+    <!-- AdminLTE App --> 
+    <script src="dist/js/app.min.js"></script>
+
+
+
+
 <script>
   $(function () {
     $('input').iCheck({

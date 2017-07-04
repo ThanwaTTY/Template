@@ -20,22 +20,21 @@ class DepositController extends Controller
 
     public function store(Request $request)
     {
-        // $rules = [
-        //     'user_id' => 'required',
-        //     'username' => 'required',
-        //     'balance' => 'required',
-        //     'bankdeposit' => 'required',
-        //     'accountnumberdeposit' => 'required',
-        //     'accontnamedeposit' => 'required',
-        //     'datetime' => 'required',
-        //     'channeldeposit' => 'required',
-        //     'tel' => 'required',
-        //     'opinion' => 'required'
-        // ];
+        $rules = [
+            'name' => 'required',
+            'balance' => 'required',
+            'bankdeposit' => 'required',
+            'accountnumberdeposit' => 'required',
+            'accontnamedeposit' => 'required',
+            'datetime' => 'required',
+            'channeldeposit' => 'required',
+            'tel' => 'required',
+            'opinion' => 'required'
+        ];
 
         $id = auth()->user()->id;
 
-        // $this->validate($request, $rules);
+         $this->validate($request, $rules);
         //$inputs = request()->except(['_token']);
         $name = request('name');
         $balance = request('balance');
@@ -60,7 +59,7 @@ class DepositController extends Controller
                 'tel' => $tel,
                 'opinion' => $opinion
             ]);
-        return redirect('/');
+        return redirect('/deposit');
         } catch (Exception $e) {
                 abort(500);
         }

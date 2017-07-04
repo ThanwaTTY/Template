@@ -16,23 +16,12 @@
   <!-- Tell the browser to be responsive to screen width -->
 
 
-  <style>
-    .example-modal .modal {
-      position: relative;
-      top: auto;
-      bottom: auto;
-      right: auto;
-      left: auto;
-      display: block;
-      z-index: 1;
-    }
-
-    .example-modal .modal {
-      background: transparent !important;
-    }
-  </style>
+  {{-- datetimepicker --}}
+    <link href="{{ asset('jquery/jquery-ui.css') }}" rel="stylesheet">
+    <link href="{{ asset('jquery/jquery-ui-timepicker-addon.css') }}" rel="stylesheet">
 @endsection
 @section('footer')
+
 <!-- jQuery 2.2.3 -->
 <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -45,11 +34,31 @@
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="../../dist/js/demo.js"></script> --}}
+
 <script>
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 })
-</script>    
+</script>  
+
+{{-- datetimepicker --}}
+    {{-- <script src="{{ asset('../../jquery/jquery-1.10.2.min.js') }}"></script> --}}
+    <script src="{{ asset('../../jquery/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('../../jquery/jquery-ui-timepicker-addon.js') }}"></script>
+    <script src="{{ asset('../../jquery/jquery-ui-sliderAccess.js') }}"></script>  
+
+
+    <script type="text/javascript">
+
+      $(function(){
+        $("#datetime").datetimepicker({
+          dateFormat: 'yy-mm-dd',
+          timeFormat: "HH:mm:ss"
+        });
+      });
+
+    </script>
+  
 @endsection
 
 @section('content')
@@ -128,7 +137,7 @@ $('#myModal').on('shown.bs.modal', function () {
                 </tr>   
                 @endforeach
               </table>
-              {{-- <center>{{ $users->appends(['gender'=>request('gender')])->links() }}</center> --}}
+              <center>{{ $deposits->links() }}</center>
               
             </div>
             <!-- /.box-body -->
@@ -168,6 +177,7 @@ $('#myModal').on('shown.bs.modal', function () {
 
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="inputname" placeholder="Name" name="name" value="{{ auth()->user()->name }}">
+                        <p style="color:red">{{ $errors->first('name') }}</p>
                         </div>
                         </div>
 
@@ -175,7 +185,8 @@ $('#myModal').on('shown.bs.modal', function () {
                         <label for="inputname" class="col-sm-3 control-label">จำนวนเงิน</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputname" placeholder="0" name="balance" value="">
+                            <input type="text" class="form-control" id="inputname" placeholder="0" name="balance" value="{{ old('balance') }}">
+                            <p style="color:red">{{ $errors->first('balance') }}</p>
                         </div>
                         </div>
 
@@ -183,7 +194,8 @@ $('#myModal').on('shown.bs.modal', function () {
                         <label for="inputname" class="col-sm-3 control-label">ธนาคารที่โอน</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputname" placeholder="ธนาคารที่โอน" name="bankdeposit" value="">
+                            <input type="text" class="form-control" id="inputname" placeholder="ธนาคารที่โอน" name="bankdeposit" value="{{ old('bankdeposit') }}">
+                            <p style="color:red">{{ $errors->first('bankdeposit') }}</p>
                         </div>
                         </div>
 
@@ -191,7 +203,8 @@ $('#myModal').on('shown.bs.modal', function () {
                         <label for="inputname" class="col-sm-3 control-label">เลขบัญชีธนาคารที่โอน</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputname" placeholder="เลขบัญชีธนาคารที่โอน" name="accountnumberdeposit" value="">
+                            <input type="text" class="form-control" id="inputname" placeholder="เลขบัญชีธนาคารที่โอน" name="accountnumberdeposit" value="{{ old('accountnumberdeposit') }}">
+                            <p style="color:red">{{ $errors->first('accountnumberdeposit') }}</p>
                         </div>
                         </div>
 
@@ -199,7 +212,8 @@ $('#myModal').on('shown.bs.modal', function () {
                         <label for="inputname" class="col-sm-3 control-label">ชื่อบัญชีธนาคารที่โอน</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="inputname" placeholder="ชื่อบัญชีธนาคารที่โอน" name="accontnamedeposit" value="">
+                            <input type="text" class="form-control" id="inputname" placeholder="ชื่อบัญชีธนาคารที่โอน" name="accontnamedeposit" value="{{ old('accontnamedeposit') }}">
+                            <p style="color:red">{{ $errors->first('accontnamedeposit') }}</p>
                         </div>
                         </div>
 
@@ -208,7 +222,8 @@ $('#myModal').on('shown.bs.modal', function () {
                         <label for="datetime" class="col-sm-3 control-label">วัน - เวลา ที่โอน</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="datetime" placeholder="" name="datetime" value="">
+                            <input type="text" class="form-control" id="datetime" placeholder="" name="datetime" value="{{ old('datetime') }}">
+                            <p style="color:red">{{ $errors->first('datetime') }}</p>
                         </div>
                         </div>
 
@@ -216,7 +231,8 @@ $('#myModal').on('shown.bs.modal', function () {
                         <label for="channeldeposit" class="col-sm-3 control-label">ช่องทางการโอน</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="channeldeposit" placeholder="" name="channeldeposit" value="">
+                            <input type="text" class="form-control" id="channeldeposit" placeholder="" name="channeldeposit" value="{{ old('channeldeposit') }}">
+                            <p style="color:red">{{ $errors->first('channeldeposit') }}</p>
                         </div>
                         </div>
 
@@ -225,7 +241,8 @@ $('#myModal').on('shown.bs.modal', function () {
                         <label for="tel" class="col-sm-3 control-label">หมายเลขโทรศัพท์</label>
 
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="tel" placeholder="" name="tel" value="">
+                            <input type="text" class="form-control" id="tel" placeholder="" name="tel" value="{{ old('tel') }}">
+                            <p style="color:red">{{ $errors->first('tel') }}</p>
                         </div>
                         </div>
 
@@ -234,6 +251,7 @@ $('#myModal').on('shown.bs.modal', function () {
 
                         <div class="col-sm-9">
                             <textarea class="form-control" rows="3" name="opinion" placeholder="">{{ old('opinion') }}</textarea>
+                            <p style="color:red">{{ $errors->first('tel') }}</p>
                         </div>
                         </div>
 

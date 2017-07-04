@@ -12,25 +12,12 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-
   <!-- Tell the browser to be responsive to screen width -->
 
+  {{-- datetimepicker --}}
+    <link href="{{ asset('jquery/jquery-ui.css') }}" rel="stylesheet">
+    <link href="{{ asset('jquery/jquery-ui-timepicker-addon.css') }}" rel="stylesheet">
 
-  <style>
-    .example-modal .modal {
-      position: relative;
-      top: auto;
-      bottom: auto;
-      right: auto;
-      left: auto;
-      display: block;
-      z-index: 1;
-    }
-
-    .example-modal .modal {
-      background: transparent !important;
-    }
-  </style>
 @endsection
 @section('footer')
 <!-- jQuery 2.2.3 -->
@@ -45,11 +32,29 @@
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="../../dist/js/demo.js"></script> --}}
+
+
+{{-- datetimepicker --}}
+    <script src="{{ asset('../../jquery/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ asset('../../jquery/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('../../jquery/jquery-ui-timepicker-addon.js') }}"></script>
+    <script src="{{ asset('../../jquery/jquery-ui-sliderAccess.js') }}"></script>
 <script>
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 })
 </script>    
+
+  <script type="text/javascript">
+
+  $(function(){
+  	$("#datetime").datetimepicker({
+  		dateFormat: 'yy-mm-dd',
+  		timeFormat: "HH:mm:ss"
+  	});
+  });
+
+  </script>
 @endsection
 @section('content')
 <section class="content">

@@ -25,12 +25,12 @@ class AuthController extends Controller
     }
     public function store(Request $request)
     {
-        // $rules = [
-        //     'username' => 'required',
-        //     'Email' => 'required',
-        //     'Password' => 'required',
-        //     'Retype_Password' => 'required'
-        // ];
+        $rules = [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'retype_password' => 'required'
+        ];
                 $name = request('name');
                 $email = request('email');
                 $password = bcrypt(request('password'));
@@ -38,8 +38,19 @@ class AuthController extends Controller
                 $cretype_password = request('retype_password');
                 $retype_password = bcrypt(request('retype_password'));
 
-                // $this->validate($request, $rules);
+                $this->validate($request, $rules);
 
+                // try {
+                //  DB::table('users')->insert([
+                //     'name' => $name,
+                //     'email' => $email,
+                //     'password' => $password
+                // ]);
+                // return redirect('/');
+                // } catch (Exception $e) {
+                //         //abort(500);
+                //         return "E-mail";
+                // }
                 if($Cpassword==$cretype_password){
                  DB::table('users')->insert([
                     'name' => $name,
@@ -59,8 +70,15 @@ class AuthController extends Controller
             
     }
 
-    public function postLogin(){
+    public function postLogin(Request $request){
+
+        $rules = [
+            'email' => 'required',
+            'password' => 'required'
+        ];
+
         $inputs = request()->except(['_token']);
+        $this->validate($request, $rules);
 
         //$inputs = request()->only(['create','edit']);
         // $inputs->users()->fill([
@@ -69,15 +87,27 @@ class AuthController extends Controller
         //     'name' => $name,
         //     'status' => $status
         // ])->save();
+
+        // try{
+        //     session()->flash('massage', 'Login Success');
+        //     //return "Check Validator";
+        // } catch (Exception $e) {
+        //     session()->flash('massage', 'Login Fail');
+        //     //return "UnCheck Validator";
+        // }
+        // return redirect('/employees/'.$id);
         
 
         if(auth()->attempt($inputs)) {
+            session()->flash('massage', 'Login Success');
              return redirect()->intended('/');
              //return 'AAAAAAA';
         } else {
-            //  abort(401);
-            return redirect('/');
+              //abort(401);
+            session()->flash('massage', 'E-mail or Password not Correct');
+            return redirect('/login');
         }
+        //return redirect()->intended('/');
     }
 
     public function logout(){
