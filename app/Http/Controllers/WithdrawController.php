@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Withdraw;
+
 class WithdrawController extends Controller
 {
     public function index()
     {
-        $withdraws = DB::table('withdraw')
+        $withdraws = DB::table('withdraws')
             //->get();
             ->paginate(10);
 
@@ -18,49 +20,46 @@ class WithdrawController extends Controller
      public function store(Request $request)
     {
         $rules = [
-            'name' => 'required',
+            'username' => 'required',
             'balance' => 'required',
-            'bankdeposit' => 'required',
-            'accountnumberdeposit' => 'required',
-            'accontnamedeposit' => 'required',
-            'datetime' => 'required',
-            'channeldeposit' => 'required',
+            'bankwithdraw' => 'required',
+            'accountnumberwithdraw' => 'required',
+            'accountnamewithdraw' => 'required',
+            'datetime' => 'required|date|after:start_date',
+            'channelwithdraw' => 'required',
             'tel' => 'required',
             'opinion' => 'required'
         ];
 
-        $id = auth()->user()->id;
 
-        //$this->validate($request, $rules);
+        $this->validate($request, $rules);
         //$inputs = request()->except(['_token']);
-        $name = request('name');
-        $balance = request('balance');
-        $bankdeposit = request('bankdeposit');
-        $accountnumberdeposit = request('accountnumberdeposit');
-        $accontnamedeposit = request('accontnamedeposit');
-        $datetime = request('datetime');
-        $channeldeposit = request('channeldeposit');
-        $tel = request('tel');
-        $opinion = request('opinion');
+        // $name = request('name');
+        // $balance = request('balance');
+        // $bankdeposit = request('bankdeposit');
+        // $accountnumberdeposit = request('accountnumberdeposit');
+        // $accontnamedeposit = request('accontnamedeposit');
+        // $datetime = request('datetime');
+        // $channeldeposit = request('channeldeposit');
+        // $tel = request('tel');
+        // $opinion = request('opinion');
         try {
-        // DB::table('deposit')
-        //     ->insert([
-        //         'user_id' => $id,
-        //         'username' => $name,
-        //         'balance' => $balance,
-        //         'bankdeposit' => $bankdeposit,
-        //         'accountnumberdeposit' => $accountnumberdeposit,
-        //         'accontnamedeposit' => $accontnamedeposit,
-        //         'datetime' => $datetime,
-        //         'channeldeposit' => $channeldeposit,
-        //         'tel' => $tel,
-        //         'opinion' => $opinion
-        //     ]);
-        //return redirect('/deposit');
-        $date = date( 'y-m-d H:m:s' );
-        return $date;
-        } catch (Exception $e) {
-                abort(500);
-        }
+
+            Withdraw::create([
+                    'user_id' => auth()->user()->id, 
+                    'username' => $request->username,
+                    'balance' => $request->balance, 
+                    'bankwithdraw' => $request->bankwithdraw, 
+                    'accountnumberwithdraw' => $request->accountnumberwithdraw, 
+                    'accountnamewithdraw' => $request->accountnamewithdraw,
+                    'datetime' => $request->datetime, 
+                    'channelwithdraw' => $request->channelwithdraw, 
+                    'tel' => $request->tel, 
+                    'opinion' => $request->opinion
+                        ]);
+                    return redirect('/deposit');
+            } catch (Exception $e) {
+                    abort(500);
+            }
     }
 }

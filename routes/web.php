@@ -50,6 +50,7 @@ Route::get('/', function () {
     Route::get('/withdraw', 'WithdrawController@index');
     Route::post('/withdraw', 'WithdrawController@store');
 
+    
     Route::get('/withdraw/create',   function () {
     return view('withdraw.create');
     });

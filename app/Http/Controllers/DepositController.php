@@ -28,14 +28,13 @@ class DepositController extends Controller
             'accontnamedeposit' => 'required',
             'datetime' => 'required',
             'channeldeposit' => 'required',
-            'tel' => 'required',
-            'opinion' => 'required'
+            'tel' => 'required'
         ];
 
         $id = auth()->user()->id;
 
          $this->validate($request, $rules);
-        //$inputs = request()->except(['_token']);
+        $inputs = request()->except(['_token']);
         $name = request('name');
         $balance = request('balance');
         $bankdeposit = request('bankdeposit');
@@ -46,7 +45,9 @@ class DepositController extends Controller
         $tel = request('tel');
         $opinion = request('opinion');
         try {
-        DB::table('deposit')
+
+            if ($opinion) {
+                DB::table('deposit')
             ->insert([
                 'user_id' => $id,
                 'username' => $name,
@@ -60,6 +61,24 @@ class DepositController extends Controller
                 'opinion' => $opinion
             ]);
         return redirect('/deposit');
+            } else {
+                DB::table('deposit')
+            ->insert([
+                'user_id' => $id,
+                'username' => $name,
+                'balance' => $balance,
+                'bankdeposit' => $bankdeposit,
+                'accountnumberdeposit' => $accountnumberdeposit,
+                'accontnamedeposit' => $accontnamedeposit,
+                'datetime' => $datetime,
+                'channeldeposit' => $channeldeposit,
+                'tel' => $tel,
+                'opinion' => ''
+            ]);
+        return redirect('/deposit');
+            }
+            
+        
         } catch (Exception $e) {
                 abort(500);
         }

@@ -106,11 +106,11 @@ $('#myModal').on('shown.bs.modal', function () {
                 @foreach($withdraws as $item)
                 <tr>
                   <td>{{ $item->id }}</td>
+                  <td>{{ $item->user_id }}</td>
                   <td>{{ $item->username }}</td>
                   <td>{{ $item->balance }}</td>
-                  <td>{{ $item->bankdeposit }}</td>
-                  <td>{{ $item->accountnumberdeposit }}</td>
-                  <td>{{ $item->accontnamedeposit }}</td>
+                  <td>{{ $item->bankwithdraw }}</td>
+                  <td>{{ $item->accountnumberwithdraw }}</td>
                   <td>
                     <form action="/user/{{ $item->id }}" method="POST">
                         {{ csrf_field() }}

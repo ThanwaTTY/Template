@@ -70,10 +70,6 @@ $('#myModal').on('shown.bs.modal', function () {
                 </div> --}}
                 <!-- /.box-header -->
                 <!-- form start -->
-                
-
-
-
                 <br>
                 <form class="form-horizontal" action="/withdraw" method="post">
                     {{ csrf_field() }}
@@ -83,7 +79,7 @@ $('#myModal').on('shown.bs.modal', function () {
                         <label for="inputname" class="col-sm-4 control-label">ชื่อ-นามสกุล</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputname" placeholder="Name" name="name" value="{{ auth()->user()->name }}">
+                            <input type="text" class="form-control" id="inputname" placeholder="Name" name="username" value="{{ auth()->user()->name }}">
                             <p style="color:red">{{ $errors->first('name') }}</p>
                         </div>
                         </div>
@@ -102,6 +98,7 @@ $('#myModal').on('shown.bs.modal', function () {
 
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="inputname" placeholder="ธนาคารที่ถอน" name="bankwithdraw" value="">
+                            <p style="color:red">{{ $errors->first('bankwithdraw') }}</p>
                         </div>
                         </div>
 
@@ -110,6 +107,7 @@ $('#myModal').on('shown.bs.modal', function () {
 
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="inputname" placeholder="เลขบัญชีธนาคารที่ถอน" name="accountnumberwithdraw" value="">
+                            <p style="color:red">{{ $errors->first('accountnumberwithdraw') }}</p>
                         </div>
                         </div>
 
@@ -118,6 +116,7 @@ $('#myModal').on('shown.bs.modal', function () {
 
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="inputname" placeholder="ชื่อบัญชีธนาคารที่ถอน" name="accountnamewithdraw" value="">
+                            <p style="color:red">{{ $errors->first('accountnamewithdraw') }}</p>
                         </div>
                         </div>
 
@@ -126,10 +125,8 @@ $('#myModal').on('shown.bs.modal', function () {
                         <label for="datetime" class="col-sm-4 control-label">วัน - เวลา ที่โอน</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="datetime" placeholder="" name="datetime" 
-                            value="@php 
-                                        echo $date = date( 'y-m-d H:m:s' );
-                            @endphp" readonly>
+                            <input type="text" class="form-control" id="datetime" placeholder="" name="datetime" value="">
+                            <p style="color:red">{{ $errors->first('datetime') }}</p>
                         </div>
                         </div>
 
@@ -137,7 +134,8 @@ $('#myModal').on('shown.bs.modal', function () {
                         <label for="channeldeposit" class="col-sm-4 control-label">ช่องทางการโอน</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="channeldeposit" placeholder="" name="channeldeposit" value="">
+                            <input type="text" class="form-control" id="channeldeposit" placeholder="" name="channelwithdraw" value="">
+                            <p style="color:red">{{ $errors->first('channelwithdraw') }}</p>
                         </div>
                         </div>
 
@@ -147,6 +145,7 @@ $('#myModal').on('shown.bs.modal', function () {
 
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="tel" placeholder="" name="tel" value="">
+                            <p style="color:red">{{ $errors->first('tel') }}</p>
                         </div>
                         </div>
 
