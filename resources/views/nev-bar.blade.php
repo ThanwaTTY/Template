@@ -25,7 +25,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-briefcase"></i> <span>หน้าหลัก</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -36,28 +36,40 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-folder"></i> <span>Data Base</span>
+            <i class="fa fa-folder"></i> <span>ข้อมูลผู้ใช้</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/user"><i class="fa fa-circle-o"></i> User</a></li>
+            <li><a href="/user"><i class="fa fa-circle-o"></i> ผู้ใช้</a></li>
             {{-- <li><a href="#"><i class="fa fa-circle-o"></i> Profile</a></li> --}}
           </ul>
         </li>
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-folder"></i> <span> Deposit/Withdraw</span>
+            <i class="fa fa-bank"></i> <span> ฝาก</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/deposit"><i class="fa fa-circle-o"></i> Deposit</a></li>
-            <li><a href="/withdraw"><i class="fa fa-circle-o"></i> Withdraw</a></li>
-            {{-- <li><a href="#"><i class="fa fa-circle-o"></i> Profile</a></li> --}}
+            <li><a href="/deposit"><i class="fa fa-history"></i> ประวัติ</a></li>
+
+          </ul>
+        </li>
+
+                <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dollar"></i> <span> ถอน</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/withdraw"><i class="fa fa-history"></i> ประวัติ</a></li>
+            <li><a href="/withdraw/create"><i class="fa fa-money"></i> แจ้งถอน</a></li>
           </ul>
         </li>
         {{-- <li class="header">LABELS</li>

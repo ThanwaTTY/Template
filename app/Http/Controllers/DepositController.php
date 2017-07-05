@@ -12,7 +12,7 @@ class DepositController extends Controller
     {
            $deposits = DB::table('deposit')
             //->get();
-            ->paginate(5);
+            ->paginate(10);
 
           return view('deposit.index', compact('deposits'));
         //return view("deposit.deposit");

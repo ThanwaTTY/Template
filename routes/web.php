@@ -47,6 +47,13 @@ Route::get('/', function () {
 	Route::get('/deposit', 'DepositController@index');
     Route::post('/deposit', 'DepositController@store');
 
+    Route::get('/withdraw', 'WithdrawController@index');
+    Route::post('/withdraw', 'WithdrawController@store');
+
+    Route::get('/withdraw/create',   function () {
+    return view('withdraw.create');
+    });
+
 Route::get('/index2',  function () {
     return view('/index2');
 });
