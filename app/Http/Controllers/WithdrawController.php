@@ -27,8 +27,7 @@ class WithdrawController extends Controller
             'accountnamewithdraw' => 'required',
             'datetime' => 'required|date|after:start_date',
             'channelwithdraw' => 'required',
-            'tel' => 'required',
-            'opinion' => 'required'
+            'tel' => 'required'
         ];
 
 
