@@ -13,7 +13,7 @@ class CreateWithdraw extends Migration
      */
     public function up()
     {
-      Schema::create('withdraws', function(Blueprint $table) {
+      Schema::create('withdraw', function(Blueprint $table) {
 
     		    $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
@@ -41,6 +41,6 @@ class CreateWithdraw extends Migration
      */
     public function down()
     {
-		Schema::drop('withdraws');
+		Schema::drop('withdraw');
     }
 }
