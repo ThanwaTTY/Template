@@ -34,6 +34,13 @@
             <li><a href="/"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
           </ul>
         </li>
+
+                <li class="treeview">
+          <a href="Activity_log">
+            <i class="fa fa-newspaper-o"></i> <span>Activity log</span>
+          </a>
+        </li>
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>ข้อมูลผู้ใช้</span>

@@ -55,6 +55,10 @@ Route::get('/', function () {
     return view('withdraw.create');
     });
 
+
+    Route::get('/Activity_log', 'ActivityLogController@index');
+    
+
 Route::get('/index2',  function () {
     return view('/index2');
 });

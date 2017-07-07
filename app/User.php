@@ -31,4 +31,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Withdraw::class, 'user_id');
     }
+
+
+        public function activity()
+    {
+        return $this->hasMany(ActivityLog::class, 'user_id');
+    }
 }

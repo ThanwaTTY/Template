@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use App\ActivityLog;
+
 
 class AuthController extends Controller
 {
@@ -99,6 +101,15 @@ class AuthController extends Controller
         
 
         if(auth()->attempt($inputs)) {
+
+            ActivityLog::create([
+                'user_id' => auth()->user()->id,
+                'message' => 'login',
+                'detail'  => 'E-mail :'.$request->email.'<BR>Password :'.$request->password
+            ]);
+
+
+
             session()->flash('massage', 'Login Success');
              return redirect()->intended('/');
              //return 'AAAAAAA';
