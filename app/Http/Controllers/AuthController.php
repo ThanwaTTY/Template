@@ -59,6 +59,7 @@ class AuthController extends Controller
                     'email' => $email,
                     'password' => $password
                 ]);
+                
                 return redirect('/');
                 // return "รหัสผ่านตรงกัน";
                 }else{return "รหัสผ่านไม่ตรงกัน";}
@@ -95,7 +96,7 @@ class AuthController extends Controller
         //     //return "Check Validator";
         // } catch (Exception $e) {
         //     session()->flash('massage', 'Login Fail');
-        //     //return "UnCheck Validator";
+        //     //return "UnCheck Validator"; 
         // }
         // return redirect('/employees/'.$id);
         
@@ -122,6 +123,14 @@ class AuthController extends Controller
     }
 
     public function logout(){
+
+
+            ActivityLog::create([
+                'user_id' => auth()->user()->id,
+                'message' => 'logout',
+                'detail'  => ''
+            ]);
+
             auth()->logout();
         return redirect('/login');
     }  

@@ -24,7 +24,7 @@ class CreateDeposit extends Migration
   		    $table->string('datetime');
   		    $table->string('channeldeposit');
   		    $table->string('tel');
-  		    $table->string('opinion');
+  		    $table->string('opinion')->nullable();
   		    $table->timestamps();
 
   		});

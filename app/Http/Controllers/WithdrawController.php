@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Withdraw;
+use App\ActivityLog;
 
 class WithdrawController extends Controller
 {
@@ -26,8 +27,7 @@ class WithdrawController extends Controller
             'accountnumberwithdraw' => 'required',
             'accountnamewithdraw' => 'required',
             'datetime' => 'required|date|after:start_date',
-            'channelwithdraw' => 'required',
-            'tel' => 'required'
+            'channelwithdraw' => 'required'
         ];
 
 
@@ -44,7 +44,7 @@ class WithdrawController extends Controller
         // $opinion = request('opinion');
         try {
 
-            Withdraw::create([
+                Withdraw::create([
                     'user_id' => auth()->user()->id, 
                     'username' => $request->username,
                     'balance' => $request->balance, 
@@ -55,7 +55,13 @@ class WithdrawController extends Controller
                     'channelwithdraw' => $request->channelwithdraw, 
                     'tel' => $request->tel, 
                     'opinion' => $request->opinion
-                        ]);
+                ]);
+
+            ActivityLog::create([
+                'user_id' => auth()->user()->id,
+                'message' => 'แจ้งถอน',
+                'detail'  => ''
+            ]);
                     return redirect('/deposit');
             } catch (Exception $e) {
                     abort(500);

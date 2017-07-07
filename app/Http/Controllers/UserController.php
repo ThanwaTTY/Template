@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\ActivityLog;
 
 class UserController extends Controller
 {
@@ -37,6 +38,12 @@ class UserController extends Controller
                     'name' => $name,
                     'email' => $email,
                     'password' => $password
+                ]);
+
+                ActivityLog::create([
+                    'user_id' => auth()->user()->id,
+                    'message' => 'Add New User ',
+                    'detail'  => 'Username :'.$request->name.' / Email :'.$request->email.' / Password :'.$request->password
                 ]);
                 return redirect('/user');
                 // return "รหัสผ่านตรงกัน";

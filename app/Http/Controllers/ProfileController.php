@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ActivityLog;
 
 
 class ProfileController extends Controller
@@ -25,6 +26,12 @@ class ProfileController extends Controller
 		$user->name = request('name');
 		$user->password = bcrypt( request('password'));
 		$user->save();
+
+		ActivityLog::create([
+                'user_id' => auth()->user()->id,
+                'message' => 'แก้ไขข้อมูลส่วนตัว ',
+                'detail'  => ''
+        ]);
 
 		return back()->with('status','Update complete!');
 	}

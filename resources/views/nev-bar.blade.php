@@ -36,7 +36,7 @@
         </li>
 
                 <li class="treeview">
-          <a href="Activity_log">
+          <a href="/Activity_log">
             <i class="fa fa-newspaper-o"></i> <span>Activity log</span>
           </a>
         </li>

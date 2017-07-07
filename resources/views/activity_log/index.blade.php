@@ -95,39 +95,34 @@ $('#myModal').on('shown.bs.modal', function () {
 
 
             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tr>
-                  <th>#</th>
-                  <th>User</th>
-                  <th>Message</th>
-                  <th>Log Time</th>
-                  <th>Action</th>
-                  {{-- <th>Status</th>
-                  <th>Reason</th> --}}
-                </tr>
-                @foreach($ActivityLogs as $item)
-                                 <tr>
-                  <td>{{ $item->id }}</td>
-                  <td>{{ $item->user->name }}</td>
-                  <td>{{ $item->message }}</td>
-                  <td>{{ $item->created_at }}</td>
-                  {{-- <td>{{ $item->updated_at }}</td> --}}
-                  <td>
-                    <form action="/user/{{ $item->id }}" method="POST">
-                        {{ csrf_field() }}
-                        {{ method_field ('DELETE') }}
-                        <a href="/user/{{ $item->id }}/edit" class="btn btn-success">Edit</a>
-                        <input class="btn btn-danger" type="submit" value="Delete"> 
-                    </form>
-                  
-                  </td>
-                  {{-- <td><span class="label label-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td> --}}
-                </tr>   
-                @endforeach
-              </table>
-              <center>{{ $ActivityLogs->appends(['gender'=>request('gender')])->links() }}</center>
-              
+                {{-- <div class="content">dd</div> --}}
+                    <table class="table table-hover">
+                        <tr>
+                        {{-- <th>#</th> --}}
+                        <th>User</th>
+                        <th>Message</th>
+                        <th>Log Time</th>
+                        {{-- <th>More Info</th> --}}
+                        {{-- <th>Status</th>
+                        <th>Reason</th> --}}
+                        </tr>
+                        @foreach($ActivityLogs as $item)
+                                        <tr>
+                        {{-- <td>{{ $item->id }}</td> --}}
+                        <td>{{ $item->user->name }}</td>
+                        <td>{{ $item->message }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        {{-- <td>{{ $item->updated_at }}</td> --}}
+                        {{-- <td>
+                                <a href="/Activity_log/{{ $item->id }}/show" class="btn btn-info">...</a>
+                        </td> --}}
+                        {{-- <td><span class="label label-success">Approved</span></td>
+                        <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td> --}}
+                        </tr>   
+                        @endforeach
+                    </table>
+                        <center>{{ $ActivityLogs->appends(['gender'=>request('gender')])->links() }}</center>
+                
             </div>
             <!-- /.box-body -->
           </div>

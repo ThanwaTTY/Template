@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use App\ActivityLog;
 
 class DepositController extends Controller
 {
@@ -45,8 +46,6 @@ class DepositController extends Controller
         $tel = request('tel');
         $opinion = request('opinion');
         try {
-
-            if ($opinion) {
                 DB::table('deposit')
             ->insert([
                 'user_id' => $id,
@@ -60,23 +59,59 @@ class DepositController extends Controller
                 'tel' => $tel,
                 'opinion' => $opinion
             ]);
-        return redirect('/deposit');
-            } else {
-                DB::table('deposit')
-            ->insert([
-                'user_id' => $id,
-                'username' => $name,
-                'balance' => $balance,
-                'bankdeposit' => $bankdeposit,
-                'accountnumberdeposit' => $accountnumberdeposit,
-                'accontnamedeposit' => $accontnamedeposit,
-                'datetime' => $datetime,
-                'channeldeposit' => $channeldeposit,
-                'tel' => $tel,
-                'opinion' => ''
+
+            ActivityLog::create([
+                'user_id' => auth()->user()->id,
+                'message' => 'แจ้งฝาก',
+                'detail'  => ''
             ]);
-        return redirect('/deposit');
-            }
+            return redirect('/deposit');
+
+
+        //     if ($opinion) {
+        //         DB::table('deposit')
+        //     ->insert([
+        //         'user_id' => $id,
+        //         'username' => $name,
+        //         'balance' => $balance,
+        //         'bankdeposit' => $bankdeposit,
+        //         'accountnumberdeposit' => $accountnumberdeposit,
+        //         'accontnamedeposit' => $accontnamedeposit,
+        //         'datetime' => $datetime,
+        //         'channeldeposit' => $channeldeposit,
+        //         'tel' => $tel,
+        //         'opinion' => $opinion
+        //     ]);
+
+        //     ActivityLog::create([
+        //         'user_id' => auth()->user()->id,
+        //         'message' => 'แจ้งฝาก',
+        //         'detail'  => ''
+        //     ]);
+
+        // return redirect('/deposit');
+        //     } else {
+        //         DB::table('deposit')
+        //     ->insert([
+        //         'user_id' => $id,
+        //         'username' => $name,
+        //         'balance' => $balance,
+        //         'bankdeposit' => $bankdeposit,
+        //         'accountnumberdeposit' => $accountnumberdeposit,
+        //         'accontnamedeposit' => $accontnamedeposit,
+        //         'datetime' => $datetime,
+        //         'channeldeposit' => $channeldeposit,
+        //         'tel' => $tel,
+        //         'opinion' => ''
+        //     ]);
+
+        //     ActivityLog::create([
+        //         'user_id' => auth()->user()->id,
+        //         'message' => 'แจ้งฝาก',
+        //         'detail'  => ''
+        //     ]);
+        // return redirect('/deposit');
+        //     }
             
         
         } catch (Exception $e) {

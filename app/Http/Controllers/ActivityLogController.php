@@ -9,7 +9,8 @@ class ActivityLogController extends Controller
 {
     public function index()
     {
-        $ActivityLogs = ActivityLog::paginate(10);
+         $ActivityLogs = ActivityLog::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->paginate(15);
+
 
     	return view('activity_log.index', compact('ActivityLogs') );
     }
