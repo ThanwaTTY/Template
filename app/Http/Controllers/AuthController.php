@@ -29,7 +29,7 @@ class AuthController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required',
             'retype_password' => 'required'
         ];
